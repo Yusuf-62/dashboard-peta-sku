@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EMACO2 Performance Region Kalimantan</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+</head>
+<body>
+  <main class="dashboard-shell">
+    <header class="dashboard-header">
+      <div class="logo-wrap"><img id="company-logo" alt="SNS Group Logo" hidden><div id="logo-fallback">SNS</div></div>
+      <div class="heading"><div id="sku-heading" class="eyebrow">SKU PERFORMANCE</div><div class="region-title">REGION <span>KALIMANTAN</span></div><div class="subtitle">MTD • VS LAST YEAR • VS AVG L3M • VS LAST MONTH • CUSTOMER ACTIVE</div></div>
+      <section class="filters">
+        <div class="filter-title">FILTER DASHBOARD</div>
+        <div class="filter-row">
+          <label>SKU<select id="sku-filter"></select></label>
+          <label>Depo<select id="depo-filter"></select></label>
+          <label>Provinsi<select id="prov-filter"></select></label>
+          <label>Kabupaten/Kota<select id="kab-filter"></select></label>
+        </div>
+      </section>
+    </header>
+    <section class="kpi-row">
+      <article class="kpi-card"><div class="kpi-icon">↗</div><div><div class="kpi-label">Total Sales ACT MTD</div><div id="kpi-sales" class="kpi-value">—</div><div id="kpi-sales-note" class="kpi-note">—</div></div></article>
+      <article class="kpi-card"><div class="kpi-icon">●</div><div><div class="kpi-label">CA</div><div id="kpi-ca" class="kpi-value">—</div><div id="kpi-ca-note" class="kpi-note">—</div></div></article>
+      <article class="kpi-card"><div class="kpi-icon">▣</div><div><div class="kpi-label">CR</div><div id="kpi-cr" class="kpi-value">—</div><div id="kpi-cr-note" class="kpi-note">Customer registered pada filter aktif</div></div></article>
+      <article class="kpi-card"><div class="kpi-icon">%</div><div><div class="kpi-label">Active Rate</div><div id="kpi-rate" class="kpi-value">—</div><div id="kpi-rate-note" class="kpi-note">—</div></div></article>
+    </section>
+    <section class="main-row">
+      <article class="panel map-card"><div class="panel-title">Peta Kinerja Sales Region Kalimantan</div><div class="map-description">Heatmap ACT MTD per kabupaten • semakin gelap = ACT MTD relatif semakin tinggi</div><div id="map"></div><div id="map-legend" class="map-legend"></div></article>
+      <div class="side-column">
+        <article class="panel detail-card"><div class="panel-title">Detail Kinerja per Kabupaten/Kota</div><div id="table-wrap" class="table-wrap"></div></article>
+        <section id="province-cards" class="province-cards"></section>
+      </div>
+    </section>
+    <footer class="dashboard-footer">Sumber: file Excel SKU terpilih dan GeoJSON kabupaten. Semua angka mengikuti filter aktif.</footer>
+    <div id="status-message" class="status-message" role="status"></div>
+  </main>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
