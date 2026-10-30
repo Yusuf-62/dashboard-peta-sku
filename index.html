@@ -3,25 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SKU Performance Region Kalimantan</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <title>EMACO2 Performance Region Kalimantan</title>
+  <link rel="icon" type="image/png" href="Assets/images/favicon.png">
+  <link rel="stylesheet" href="Assets/css/style.css?v=20261030-fix4">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
   <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 </head>
 <body>
+  <div id="loading-screen" class="loading-screen" role="status" aria-live="polite">
+    <div class="loading-content"><div class="loading-brand">SNS GROUP</div><div class="loading-title">Loading Dashboard</div><div class="loading-spinner" aria-hidden="true"></div><div class="loading-caption">Mohon tunggu, data sedang diproses...</div></div>
+  </div>
   <main class="dashboard-shell">
     <header class="dashboard-header">
-      <div class="logo-wrap"><img id="company-logo" alt="SNS Group Logo" hidden><div id="logo-fallback">SNS</div></div>
+      <div class="logo-wrap"><img id="company-logo" src="Assets/images/SNS_Group_Logo.png" alt="SNS Group Logo" hidden><div id="logo-fallback">SNS</div></div>
       <div class="heading"><div id="sku-heading" class="eyebrow">SKU PERFORMANCE</div><div class="region-title">REGION <span>KALIMANTAN</span></div><div class="subtitle">MTD • VS LAST YEAR • VS AVG L3M • VS LAST MONTH • CUSTOMER ACTIVE</div></div>
       <section class="filters">
-        <div class="filter-title">FILTER DASHBOARD</div>
-        <div class="filter-row">
-          <label>SKU<select id="sku-filter"></select></label>
-          <label>Depo<select id="depo-filter"></select></label>
-          <label>Provinsi<select id="prov-filter"></select></label>
-          <label>Kabupaten/Kota<select id="kab-filter"></select></label>
+        <div class="filter-toolbar">
+          <div class="compact-filter region-control"><span>Wilayah</span><button id="region-menu-trigger" class="menu-trigger" type="button" aria-haspopup="true" aria-expanded="false">Semua wilayah ▾</button><div id="region-menu" class="nested-menu" hidden></div><select id="region-filter" class="native-filter-source" aria-label="Pilih wilayah"><option value="ALL">Semua wilayah</option></select></div>
+          <label class="compact-filter depo-control"><span>Depo</span><select id="depo-filter"><option value="ALL">Semua Depo</option></select></label>
+          <div class="compact-filter sku-control"><span>SKU</span><button id="sku-menu-trigger" class="menu-trigger" type="button" aria-haspopup="true" aria-expanded="false">Pilih SKU ▾</button><div id="sku-menu" class="nested-menu" hidden></div><input id="sku-filter" class="native-filter-source" list="sku-options" placeholder="Cari nama/kode SKU" autocomplete="off"><datalist id="sku-options"></datalist></div>
         </div>
+        <div id="advanced-filters" class="advanced-filters" hidden><div class="compact-filter"><span>Kecamatan</span><button id="kecamatan-menu-trigger" class="menu-trigger" type="button" aria-haspopup="true" aria-expanded="false">Semua kecamatan ▾</button><div id="kecamatan-menu" class="nested-menu" hidden></div><select id="kecamatan-filter" class="native-filter-source"><option value="ALL">Semua kecamatan</option></select></div></div>
       </section>
     </header>
     <section class="kpi-row">
@@ -31,15 +34,12 @@
       <article class="kpi-card"><div class="kpi-icon">%</div><div><div class="kpi-label">Active Rate</div><div id="kpi-rate" class="kpi-value">—</div><div id="kpi-rate-note" class="kpi-note">—</div></div></article>
     </section>
     <section class="main-row">
-      <article class="panel map-card"><div class="panel-title">Peta Kinerja Sales Region Kalimantan</div><div class="map-description">Heatmap ACT MTD per kabupaten • semakin gelap = ACT MTD relatif semakin tinggi</div><div id="map"></div><div id="map-legend" class="map-legend"></div></article>
-      <div class="side-column">
-        <article class="panel detail-card"><div class="panel-title">Detail Kinerja per Kabupaten/Kota</div><div id="table-wrap" class="table-wrap"></div></article>
-        <section id="province-cards" class="province-cards"></section>
-      </div>
+      <article class="panel map-card"><div class="panel-title">Peta Kinerja Sales Region Kalimantan</div><div class="map-description">Heatmap ACT MTD per kabupaten • batas kecamatan hanya tampil setelah kabupaten dipilih</div><div id="map"></div><div id="map-legend" class="map-legend"></div></article>
+      <div class="side-column"><article class="panel detail-card"><div class="panel-title">Detail Kinerja per Kabupaten/Kota</div><div id="table-wrap" class="table-wrap"></div></article><section id="province-cards" class="province-cards"></section></div>
     </section>
     <footer class="dashboard-footer">Sumber: file Excel SKU terpilih dan GeoJSON kabupaten. Semua angka mengikuti filter aktif.</footer>
     <div id="status-message" class="status-message" role="status"></div>
   </main>
-  <script src="assets/js/dashboard.js"></script>
+  <script src="Assets/js/dashboard.js?v=20261030-fix5"></script>
 </body>
 </html>
