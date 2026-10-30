@@ -1,3 +1,6 @@
+dash
 pandas
-openpyxl
 geopandas
+plotly
+openpyxl
+xlrd
