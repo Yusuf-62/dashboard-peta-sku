@@ -1,4 +1,4 @@
-# Dashboard Peta Potensi SKU — GitHub Pages
+# Dashboard Peta Potensi SKU - GitHub Pages
 
 Versi statis untuk GitHub Pages. Python hanya berjalan lokal untuk mengubah file Excel dan GeoJSON menjadi JSON. Interaksi filter, KPI, tabel, dan peta dijalankan di browser dengan JavaScript.
 
